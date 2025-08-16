@@ -58,11 +58,10 @@ export default function WatchPage({ movie }) {
             allowFullScreen
           ></iframe>
         </div>
-        <Link href="/kino?token=MINII-NUUTS-TULHUUR-123" className="back-button">
+        // 
+<Link href="/kino?token=MINII-NUUTS-TULHUUR-123" className="back-button">
   &larr; ?????
 </Link>
-          &larr; ?????
-        </a>
       </div>
 
       <style jsx global>{`
