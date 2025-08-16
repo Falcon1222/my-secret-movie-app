@@ -1,31 +1,30 @@
 import Link from 'next/link';
- pages/watch/[id].js
 
- =========================================================
- 1. ?????? ????????
- ??? ?????? videoUrl ?????? ??? ?????? ????????? ???? ?????.
- =========================================================
+/* =========================================================
+  1. Өгөгдлийн сангийн үүрэг гүйцэтгэх хэсэг.
+  Энд байгаа videoUrl-уудыг өөрийн хүссэнээр солиорой.
+ =========================================================*/
 const movies = [
   {
     id: 1,
-    title: '????? ?????? ?????? ?????????',
-    videoUrl: 'https:www.youtube.com/embed/dQw4w9WgXcQ?rel=0&autoplay=1&mute=1&controls=1'
+    title: 'Амьдрал',
+    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&autoplay=1&mute=1&controls=1'
   },
   {
     id: 2,
-    title: '???? ?????????',
-    videoUrl: 'https:www.youtube.com/embed/some_other_video_id?rel=0&autoplay=1&mute=1&controls=1'
+    title: 'Хүчирхэг нэгэн',
+    videoUrl: 'https://www.youtube.com/embed/some_other_video_id?rel=0&autoplay=1&mute=1&controls=1'
   },
   {
     id: 3,
-    title: '????? ?? ????????? ?????',
-    videoUrl: 'https:www.youtube.com/embed/another_video_id?rel=0&autoplay=1&mute=1&controls=1'
+    title: 'Цөлийн Шуурга',
+    videoUrl: 'https://www.youtube.com/embed/another_video_id?rel=0&autoplay=1&mute=1&controls=1'
   }
 ];
 
- =========================================================
- ??? ??????? ??????? ????????????
- =========================================================
+/* =========================================================
+  Хуудас бүрээр өгөгдөл дамжуулах функц
+ =========================================================*/
 export async function getServerSideProps(context) {
   const { id } = context.params;
   const movie = movies.find(m => m.id.toString() === id);
@@ -37,9 +36,9 @@ export async function getServerSideProps(context) {
   return { props: { movie } };
 }
 
- =========================================================
- ????? ????????? ???????? ????? (HTML ?? CSS)
- =========================================================
+/* =========================================================
+  Үндсэн компонентын хэсэг (HTML ба CSS)
+ =========================================================*/
 export default function WatchPage({ movie }) {
   return (
     <>
@@ -50,15 +49,15 @@ export default function WatchPage({ movie }) {
             src={movie.videoUrl}
             title={movie.title}
             frameBorder="0"
-             allow ????? "autoplay" ??? ???? ???? ?? ?????
+            /* "allow" property-д autoplay-г зөвшөөрч өгнө */
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
         </div>
          
-<Link href="/kino?token=MINII-NUUTS-TULHUUR-123" className="back-button">
-  &larr; ?????
-</Link>
+        <Link href="/kino?token=MINII-NUUTS-TULHUUR-123" className="back-button">
+          &larr; Буцах
+        </Link>
       </div>
 
       <style jsx global>{`
@@ -82,7 +81,7 @@ export default function WatchPage({ movie }) {
         }
         .video-player-wrapper {
           position: relative;
-          padding-bottom: 56.25%; /* 16:9 ??????? */
+          padding-bottom: 56.25%; /* 16:9 харьцаа */
           height: 0;
           overflow: hidden;
           background-color: #111;
