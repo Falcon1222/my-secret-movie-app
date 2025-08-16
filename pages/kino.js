@@ -1,3 +1,4 @@
+import Image from 'next/image';
 // pages/kino.js
 
 // =========================================================
@@ -78,7 +79,7 @@ export default function KinoPage({ authorized }) {
           <div className="movie-grid">
             {movies.map(movie => (
               <a key={movie.id} href={movie.linkUrl} className="movie-card">
-                <img src={movie.imageUrl} alt={movie.title} />
+                <Image src={movie.imageUrl} alt={movie.title} width={180} height={270} />
                 <div className="movie-title">{movie.title}</div>
               </a>
             ))}
